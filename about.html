@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Prosop.ai">
+    <title>About - Prosop.ai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/Favicon Transparent.ico">
+    <link rel="icon" type="image/png" href="images/Original Logo Symbol.png">
+</head>
+<body>
+    <!-- Header with Logo and Menu Button -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/cropped_transparent_logo_white_letters.png" alt="Prosop.ai Logo" style="height: 60px; width: auto;">
+            </a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+        </button>
+    </header>
+
+    <!-- Slide-out Menu -->
+    <nav class="slide-menu" id="slideMenu">
+        <button class="menu-close" id="menuClose" aria-label="Close menu">&times;</button>
+        <ul class="menu-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#projects">What We Do</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Hero Section with Cropped Video -->
+    <section id="about-hero" class="hero hero-cropped">
+        <div class="hero-video-wrapper">
+            <video class="hero-video hero-video-cropped" autoplay muted loop playsinline>
+                <source src="images/Owl_Programs_on_Laptop_Flies_Away_cropped.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="container">
+            <div class="hero-value-prop">
+                <h1>AI for forward thinkers</h1>
+                <p class="hero-subtitle"><span class="subtitle-strategy">Strategy.</span> <span class="subtitle-development">Development.</span> <span class="subtitle-delivered">Delivered.</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/IMG_0006_2.png" alt="About Prosop.ai">
+                </div>
+                <div class="about-text">
+                    <p>Prosop.ai was born from a desire to bring academic excellence to real world challenges, where innovation meets intelligence. We are dedicated to transforming the way businesses leverage artificial intelligence to solve complex challenges and unlock new opportunities.</p>
+                    <p>Our team of experts combines deep technical knowledge with creative problem-solving to deliver customised AI solutions that drive real results. Whether you're looking to streamline operations, enhance decision-making, or pioneer new capabilities, we're here to guide you every step of the way.</p>
+                    <p>At Prosop.ai, we believe that the future belongs to those who can harness the power of intelligent systems. Let us help you design that future, one project at a time.</p>
+                </div>
+            </div>
+
+            <!-- Our Principles Subsection -->
+            <div class="values-section">
+                <h3 class="values-title">Our Principles</h3>
+                
+                <div class="values-grid">
+                    <!-- Value 1: Unyielding Security -->
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M40 10L15 22V38C15 52.5 24 65.5 40 70C56 65.5 65 52.5 65 38V22L40 10Z" stroke="#2B2B2B" stroke-width="2.5" stroke-linejoin="round"/>
+                                <path d="M40 30V42M40 50H40.02" stroke="#2B2B2B" stroke-width="2.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h4 class="value-heading">Security by Design</h4>
+                        <p class="value-description">Every solution is GDPR-native, protecting you and your customers from day one.</p>
+                    </div>
+
+                    <!-- Value 2: Radical Transparency -->
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="15" y="15" width="50" height="50" stroke="#2B2B2B" stroke-width="2.5" stroke-linejoin="round"/>
+                                <rect x="22" y="22" width="36" height="36" stroke="#2B2B2B" stroke-width="2" stroke-linejoin="round" opacity="0.6"/>
+                                <line x1="30" y1="40" x2="50" y2="40" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="30" y1="46" x2="45" y2="46" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h4 class="value-heading">Honest Guidance</h4>
+                        <p class="value-description">We are not sellers. We are problem-solvers. Expect direct, transparent advice aimed squarely at your most important challenges.</p>
+                    </div>
+
+                    <!-- Value 3: End-to-End Partnership -->
+                    <div class="value-item">
+                        <div class="value-icon"> 
+                            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="20" cy="40" r="8" stroke="#2B2B2B" stroke-width="2.5"/>
+                                <circle cx="40" cy="25" r="8" stroke="#2B2B2B" stroke-width="2.5"/>
+                                <circle cx="60" cy="40" r="8" stroke="#2B2B2B" stroke-width="2.5"/>
+                                <circle cx="40" cy="55" r="8" stroke="#2B2B2B" stroke-width="2.5"/>
+                                <line x1="26" y1="36" x2="34" y2="29" stroke="#2B2B2B" stroke-width="2"/>
+                                <line x1="26" y1="44" x2="34" y2="51" stroke="#2B2B2B" stroke-width="2"/>
+                                <line x1="46" y1="29" x2="54" y2="36" stroke="#2B2B2B" stroke-width="2"/>
+                                <line x1="46" y1="51" x2="54" y2="44" stroke="#2B2B2B" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h4 class="value-heading">True Partnership</h4>
+                        <p class="value-description">Your mission becomes our mission. We're with you for the long haul, from design to deployment and beyond.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/cropped_transparent_logo_white_letters.png" alt="Prosop.ai Logo" style="height: 60px; width: auto; margin-bottom: 1rem;">
+                    </div>
+                    <p>Designing intelligent systems one project at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#projects">What We Do</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul class="social-links">
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Prosop.ai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Menu Toggle -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const slideMenu = document.getElementById('slideMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuLinks = document.querySelectorAll('.menu-links a');
+
+        function openMenu() {
+            slideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            slideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        menuClose.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // Close menu when clicking on a link
+        menuLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Close menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && slideMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>
+

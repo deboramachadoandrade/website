@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio Website">
-    <title>My Portfolio</title>
+    <meta name="description" content="Prosop.ai - AI Strategy, Custom Development & Fractional Leadership for Forward-Thinking Businesses">
+    <title>Prosop.ai - AI Consultancy & Custom Development</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="images/Favicon Transparent.ico">
     <link rel="icon" type="image/png" href="images/Original Logo Symbol.png">
@@ -17,7 +17,7 @@
     <header class="header">
         <div class="logo">
             <a href="#home">
-                <img src="images/cropped_transparent_logo_white_letters.png" alt="Prosop.ai Logo" style="height: 60px; width: auto;">
+                <img src="images/Transparent Logo_black_letters.png" alt="Prosop.ai Logo" style="height: 130px; width: auto;">
             </a>
         </div>
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
@@ -32,8 +32,8 @@
         <button class="menu-close" id="menuClose" aria-label="Close menu">&times;</button>
         <ul class="menu-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#projects">What We Do</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -43,10 +43,14 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="images/Owl_Programs_on_Laptop_Flies_Away_cropped.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div class="container">
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">What we do</a>
-                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            <div class="hero-value-prop">
+                <h1>AI for forward thinkers</h1>
+                <p class="hero-subtitle"><span class="subtitle-strategy">Strategy.</span> <span class="subtitle-development">Development.</span> <span class="subtitle-delivered">Delivered.</span></p>
             </div>
         </div>
     </section>
@@ -54,59 +58,86 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2>My Projects</h2>
-            <p class="section-description">Here are some of my recent works</p>
+            <h2>What We Do</h2>
             
             <div class="projects-grid">
-                <!-- Project Card 1 -->
-                <div class="project-card">
+                <!-- Project Item 1 -->
+                <a href="strategy.html" class="project-item">
                     <div class="project-image">
-                        <img src="images/IMG_0006_2.png" alt="Project 1">
+                        <img src="images/yellow_ochre.png" alt="AI Consultancy">
                     </div>
                     <div class="project-info">
-                        <h3>Project Title 1</h3>
-                        <p>A brief description of the first project. This showcases my skills in web development and design.</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <a href="#" class="project-link">View Project →</a>
+                        <h3>AI Strategy & Consultancy</h3>
+                        <p>Identify high-impact use cases, and create a clear, actionable strategy.</p>
                     </div>
-                </div>
+                </a>
 
-                <!-- Project Card 2 -->
-                <div class="project-card">
+                <!-- Project Item 2 -->
+                <a href="#" class="project-item">
                     <div class="project-image">
-                        <img src="images/IMG_0006_2.png" alt="Project 2">
+                        <img src="images/grey.png" alt="AI Development">
                     </div>
                     <div class="project-info">
-                        <h3>Project Title 2</h3>
-                        <p>A brief description of the second project. This demonstrates my expertise in building responsive applications.</p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
-                        </div>
-                        <a href="#" class="project-link">View Project →</a>
+                        <h3>Custom AI Development</h3>
+                        <p>Design, build, and deploy the custom AI solutions that power your business.</p>
                     </div>
-                </div>
+                </a>
 
-                <!-- Project Card 3 -->
-                <div class="project-card">
+                <!-- Project Item 3 -->
+                <a href="#" class="project-item">
                     <div class="project-image">
-                        <img src="images/IMG_0006_2.png" alt="Project 3">
+                        <img src="images/black.png" alt="AI Leadership">
                     </div>
                     <div class="project-info">
-                        <h3>Project Title 3</h3>
-                        <p>A brief description of the third project. This highlights my ability to create elegant solutions.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Django</span>
-                            <span class="tag">PostgreSQL</span>
-                        </div>
-                        <a href="#" class="project-link">View Project →</a>
+                        <h3>Fractional AI Leadership</h3>
+                        <p>Continuous strategic direction and team mentorship.</p>
                     </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section id="testimonial" class="testimonial">
+        <div class="container">
+            <blockquote class="testimonial-quote">
+                <div class="testimonial-content">
+                    <p>"Prosop.ai's strategic and scientific consulting for AI integration has made all the difference for the Vericode and dott.ai products."</p>
+                    <cite class="testimonial-author">— Marcelo Marchi, CEO of Vericode Tecnologia</cite>
+                </div>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section id="trusted-by" class="trusted-by">
+        <div class="container">
+            <h2>Trusted by:</h2>
+            <div class="trusted-logos">
+                <div class="logo-item">
+                    <img src="images/logo_vericode.png" alt="Vericode">
+                </div>
+                <div class="logo-item">
+                    <img src="images/logo_arborsquare.jpg" alt="Arbor Square">
+                </div>
+                <div class="logo-item">
+                    <img src="images/logo_dott.png" alt="Dott">
+                </div>
+                <div class="logo-item">
+                    <img src="images/logo_firstai.png" alt="First AI">
+                </div>
+                <div class="logo-item">
+                    <img src="images/logo_perlonai.png" alt="Perlon AI">
+                </div>
+                <div class="logo-item">
+                    <img src="images/logo_perlonlabs.png" alt="Perlon Labs">
+                </div>
+                <div class="logo-item">
+                    <img src="images/logo_upstreamly.png" alt="Upstreamly">
+                </div>
+                <div class="logo-item">
+                    <img src="images/logo_aimakerspace.png" alt="AI Makerspace">
                 </div>
             </div>
         </div>
@@ -120,29 +151,27 @@
                     <div class="footer-logo">
                         <img src="images/cropped_transparent_logo_white_letters.png" alt="Prosop.ai Logo" style="height: 60px; width: auto; margin-bottom: 1rem;">
                     </div>
-                    <p>Building digital experiences one project at a time.</p>
+                    <p>Designing intelligent systems one project at a time.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">What We Do</a></li>
+                        <li><a href="about.html">About</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Connect</h4>
                     <ul class="social-links">
-                        <li><a href="#">GitHub</a></li>
                         <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">Twitter</a></li>
                         <li><a href="#">Email</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+                <p>&copy; 2025 Prosop.ai. All rights reserved.</p>
             </div>
         </div>
     </footer>
