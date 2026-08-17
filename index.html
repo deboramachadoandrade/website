@@ -3,215 +3,398 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Prosop.ai - AI Strategy, Custom Development & Fractional Leadership for Forward-Thinking Businesses">
-    <title>Prosop.ai - AI Consultancy & Custom Development</title>
+    <meta name="description" content="Prosop.ai is an independent AI consultancy. We find the AI work worth doing, build it, and measure whether it worked. Strategy, custom development and fractional AI leadership.">
+    <title>Prosop.ai — AI for forward thinkers</title>
+
+    <meta property="og:title" content="Prosop.ai — AI for forward thinkers">
+    <meta property="og:description" content="Strategy. Development. Delivered. An independent AI consultancy that runs projects like experiments.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/Transparent Logo_black_letters.png">
+    <meta name="theme-color" content="#FAF8F3">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="images/Favicon Transparent.ico">
-    <link rel="icon" type="image/png" href="images/Original Logo Symbol.png">
+    <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+    <link rel="icon" href="images/favicon.ico" sizes="32x32">
+    <link rel="icon" type="image/png" href="images/icon-512.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <script src="js/main.js" defer></script>
 </head>
 <body>
-    <!-- Header with Logo and Menu Button -->
+    <!-- Wobble filter: turns clean vector paths into something closer to pen on paper -->
+    <svg class="svg-defs" aria-hidden="true" focusable="false">
+        <filter id="sketch" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="7" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="scroll-ruler" aria-hidden="true"><div class="scroll-ruler__fill" id="scrollFill"></div></div>
+
     <header class="header">
-        <div class="logo">
-            <a href="#home">
-                <img src="images/Transparent Logo_black_letters.png" alt="Prosop.ai Logo" style="height: 130px; width: auto;">
+        <div class="header__logo">
+            <a href="index.html" aria-label="Prosop.ai — home">
+                <img src="images/Transparent Logo_black_letters.png" alt="Prosop.ai" width="2208" height="1042">
             </a>
         </div>
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="slideMenu">
             <span class="hamburger"></span>
             <span class="hamburger"></span>
             <span class="hamburger"></span>
         </button>
     </header>
 
-    <!-- Slide-out Menu -->
-    <nav class="slide-menu" id="slideMenu">
+    <nav class="slide-menu grid-paper" id="slideMenu" aria-hidden="true" aria-label="Main">
         <button class="menu-close" id="menuClose" aria-label="Close menu">&times;</button>
         <ul class="menu-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#projects">What We Do</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a data-num="01" href="index.html" aria-current="page">Home</a></li>
+            <li><a data-num="02" href="index.html#what-we-do">What we do</a></li>
+            <li><a data-num="03" href="strategy.html">Strategy</a></li>
+            <li><a data-num="04" href="development.html">Development</a></li>
+            <li><a data-num="05" href="leadership.html">Leadership</a></li>
+            <li><a data-num="06" href="about.html">About</a></li>
+            <li><a data-num="07" href="about.html#join">Join us <span class="tag">hiring</span></a></li>
+            <li><a data-num="08" href="index.html#contact">Contact</a></li>
         </ul>
+        <p class="menu-foot">Still awake? So are we.</p>
     </nav>
 
-    <!-- Menu Overlay -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="images/Owl_Programs_on_Laptop_Flies_Away_cropped.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="container">
-            <div class="hero-value-prop">
-                <h1>AI for forward thinkers</h1>
-                <p class="hero-subtitle"><span class="subtitle-strategy">Strategy.</span> <span class="subtitle-development">Development.</span> <span class="subtitle-delivered">Delivered.</span></p>
+    <main id="main">
+
+        <!-- ============ HERO ============ -->
+        <section class="hero surface-paper grid-paper">
+            <div class="container">
+                <div class="hero__grid">
+                    <div class="hero__text">
+                        <p class="hero__eyebrow">Independent AI consultancy</p>
+                        <h1>AI for forward thinkers</h1>
+
+                        <svg class="hero__wave" viewBox="0 0 460 46" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">
+                            <path d="M0 3C1.917 3.994 7.667 5.998 11.5 8.965C15.33 11.93 19.17 16.93 23 20.81C26.83 24.68 30.67 29.37 34.5 32.2C38.33 35.04 42.17 37.24 46 37.84C49.83 38.43 53.67 37.42 57.5 35.77C61.33 34.12 65.17 30.77 69 27.94C72.83 25.1 76.67 21.29 80.5 18.75C84.33 16.22 88.17 13.8 92 12.72C95.83 11.64 99.67 11.58 103.5 12.29C107.3 13 111.2 15.03 115 16.96C118.8 18.9 122.7 21.81 126.5 23.9C130.3 26 134.2 28.3 138 29.55C141.8 30.8 145.7 31.48 149.5 31.4C153.3 31.32 157.2 30.27 161 29.06C164.8 27.85 168.7 25.78 172.5 24.15C176.3 22.53 180.2 20.53 184 19.31C187.8 18.09 191.7 17.11 195.5 16.82C199.3 16.52 203.2 16.89 207 17.55C210.8 18.21 214.7 19.58 218.5 20.76C222.3 21.94 226.2 23.55 230 24.63C233.8 25.71 237.7 26.76 241.5 27.25C245.3 27.73 249.2 27.8 253 27.53C256.8 27.27 260.7 26.44 264.5 25.65C268.3 24.85 272.2 23.63 276 22.75C279.8 21.86 283.7 20.87 287.5 20.33C291.3 19.78 295.2 19.46 299 19.47C302.8 19.48 306.7 19.9 310.5 20.39C314.3 20.88 318.2 21.74 322 22.42C325.8 23.1 329.7 23.95 333.5 24.47C337.3 25 341.2 25.43 345 25.57C348.8 25.72 352.7 25.58 356.5 25.32C360.3 25.06 364.2 24.5 368 24.01C371.8 23.52 375.7 22.84 379.5 22.38C383.3 21.92 387.2 21.47 391 21.25C394.8 21.03 398.7 20.99 402.5 21.08C406.3 21.18 410.2 21.52 414 21.84C417.8 22.17 421.7 22.68 425.5 23.05C429.3 23.43 433.2 23.85 437 24.09C440.8 24.32 444.7 24.47 448.5 24.48C452.3 24.49 458.1 24.18 460 24.12"/>
+                        </svg>
+
+                        <p class="hero__triad"><span>Strategy.</span> <span>Development.</span> <span>Delivered.</span></p>
+
+                        <p class="hero__lede">Most AI projects fail quietly, somewhere between the pitch deck and production. We find the work that's genuinely worth doing, build it properly, and measure whether it moved anything.</p>
+
+                        <div class="btn-row">
+                            <a class="btn btn--primary" href="#contact">Start a conversation</a>
+                            <a class="btn btn--ghost" href="#what-we-do">See what we do</a>
+                        </div>
+                    </div>
+
+                    <figure class="plate hero__plate">
+                        <div class="plate__media">
+                            <video autoplay muted loop playsinline preload="metadata" poster="images/hero-poster.jpg" aria-label="Animation of an owl programming at a laptop before flying away">
+                                <source src="images/Owl_Programs_on_Laptop_Flies_Away_cropped.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <figcaption class="plate__caption"><b>Fig. 1</b> — Nocturnal debugging, observed in the wild. Subject later flew away.</figcaption>
+                    </figure>
+                </div>
+
+                <p class="annot annot--right hero__note">
+                    <svg viewBox="0 0 34 34" aria-hidden="true" focusable="false"><path d="M4 28C10 26 20 20 27 7"/><path d="M20 6.5 27.5 5.5 27 13"/></svg>
+                    yes, that is our logo moonlighting
+                </p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2>What We Do</h2>
-            
-            <div class="projects-grid">
-                <!-- Project Item 1 -->
-                <a href="strategy.html" class="project-item">
-                    <div class="project-image">
-                        <img src="images/yellow_ochre.png" alt="AI Consultancy">
-                    </div>
-                    <div class="project-info">
-                        <h3>AI Strategy & Consultancy</h3>
-                        <p>Identify high-impact use cases, and create a clear, actionable strategy.</p>
-                    </div>
-                </a>
+        <div class="edge"></div>
 
-                <!-- Project Item 2 -->
-                <a href="#" class="project-item">
-                    <div class="project-image">
-                        <img src="images/grey.png" alt="AI Development">
-                    </div>
-                    <div class="project-info">
+        <!-- ============ § 01 WHAT WE DO ============ -->
+        <section id="what-we-do" class="section surface-paper">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="section-label"><b>§ 01</b> What we do</p>
+                    <h2>Three ways we plug in</h2>
+                    <p class="section-lede">Some clients need a map, some need builders, some need someone senior in the room every week. Most need two of the three, in an order that only becomes obvious once we start.</p>
+                </div>
+
+                <div class="card-grid">
+                    <a class="card reveal" href="strategy.html">
+                        <p class="card__index">01 / STRATEGY</p>
+                        <div class="card__figure">
+                            <svg class="diagram" viewBox="0 0 220 150" aria-hidden="true" focusable="false">
+                                <g filter="url(#sketch)">
+                                    <path class="faint" d="M18 140H206M18 140V14"/>
+                                    <path d="M22 22C23.47 25.29 27.87 35.52 30.8 41.76C33.73 48 36.67 53.89 39.6 59.44C42.53 64.99 45.47 70.19 48.4 75.04C51.33 79.89 54.27 84.4 57.2 88.56C60.13 92.72 63.07 96.53 66 100C68.93 103.5 71.87 106.6 74.8 109.4C77.73 112.1 80.67 114.6 83.6 116.6C86.53 118.7 89.47 120.5 92.4 121.8C95.33 123.2 98.27 124.3 101.2 125C104.1 125.7 107.1 126 110 126C112.9 126 115.9 125.7 118.8 125C121.7 124.3 124.7 123.2 127.6 121.8C130.5 120.5 133.5 118.7 136.4 116.6C139.3 114.6 142.3 112.1 145.2 109.4C148.1 106.6 151.1 103.5 154 100C156.9 96.53 159.9 92.72 162.8 88.56C165.7 84.4 168.7 79.89 171.6 75.04C174.5 70.19 177.5 64.99 180.4 59.44C183.3 53.89 186.3 48 189.2 41.76C192.1 35.52 196.5 25.29 198 22"/>
+                                    <path class="faint dashed" d="M110 126V140"/>
+                                    <path class="accent" d="M52 62 A 22 22 0 0 1 74 44"/>
+                                    <path class="accent" d="M70 40 74 44.5 69.5 49"/>
+                                    <circle class="faint" cx="45" cy="70" r="7"/>
+                                </g>
+                                <circle class="accent-fill" cx="110" cy="117" r="9"/>
+                            </svg>
+                        </div>
+                        <h3>AI Strategy &amp; Consultancy</h3>
+                        <p class="card__caption">Fig. 1.1 — Locating the minimum</p>
+                        <p>Most AI roadmaps are wish lists sorted by excitement. We map your real constraints, find where the payoff is steepest, and tell you plainly which ideas to drop.</p>
+                        <span class="card__more">Read more
+                            <svg viewBox="0 0 74 8" aria-hidden="true" focusable="false"><path d="M1 5C12 2 20 7 31 4S52 1 62 6s10-1 11-2"/></svg>
+                        </span>
+                    </a>
+
+                    <a class="card reveal" href="development.html">
+                        <p class="card__index">02 / DEVELOPMENT</p>
+                        <div class="card__figure">
+                            <svg class="diagram" viewBox="0 0 220 150" aria-hidden="true" focusable="false">
+                                <g filter="url(#sketch)">
+                                    <path d="M20 108H55M55 108H155M55 108V48M55 48H155M155 108V48"/>
+                                    <path class="accent" d="M155 48H198M155 48V16"/>
+                                    <path class="dashed" d="M46 117 64 99"/>
+                                    <path class="dashed" d="M146 57 164 39"/>
+                                    <path d="M46 57 64 39M146 117 164 99"/>
+                                    <circle class="faint" cx="16" cy="108" r="6"/>
+                                </g>
+                                <circle class="accent-fill" cx="198" cy="48" r="5"/>
+                                <circle class="accent-fill" cx="155" cy="16" r="5"/>
+                                <text x="8" y="132">in</text>
+                                <text x="182" y="70">out</text>
+                            </svg>
+                        </div>
                         <h3>Custom AI Development</h3>
-                        <p>Design, build, and deploy the custom AI solutions that power your business.</p>
-                    </div>
-                </a>
+                        <p class="card__caption">Fig. 1.2 — Two paths, recombined</p>
+                        <p>Systems that survive contact with real users, real data and real load. Evaluated against a baseline before they ship, and monitored after, because that is when models quietly rot.</p>
+                        <span class="card__more">Read more
+                            <svg viewBox="0 0 74 8" aria-hidden="true" focusable="false"><path d="M1 5C12 2 20 7 31 4S52 1 62 6s10-1 11-2"/></svg>
+                        </span>
+                    </a>
 
-                <!-- Project Item 3 -->
-                <a href="#" class="project-item">
-                    <div class="project-image">
-                        <img src="images/black.png" alt="AI Leadership">
-                    </div>
-                    <div class="project-info">
+                    <a class="card reveal" href="leadership.html">
+                        <p class="card__index">03 / LEADERSHIP</p>
+                        <div class="card__figure">
+                            <svg class="diagram" viewBox="0 0 220 150" aria-hidden="true" focusable="false">
+                                <g filter="url(#sketch)">
+                                    <ellipse class="faint" cx="110" cy="75" rx="86" ry="32"/>
+                                    <ellipse class="faint" cx="110" cy="75" rx="86" ry="32" transform="rotate(60 110 75)"/>
+                                    <ellipse class="faint" cx="110" cy="75" rx="86" ry="32" transform="rotate(-60 110 75)"/>
+                                </g>
+                                <circle class="accent-fill" cx="110" cy="75" r="13"/>
+                                <circle class="dot" cx="196" cy="75" r="6"/>
+                                <circle class="dot" cx="64.5" cy="51.7" r="6"/>
+                                <circle class="dot" cx="112.5" cy="126.1" r="6"/>
+                            </svg>
+                        </div>
                         <h3>Fractional AI Leadership</h3>
-                        <p>Continuous strategic direction and team mentorship.</p>
+                        <p class="card__caption">Fig. 1.3 — A stable configuration</p>
+                        <p>Senior technical direction without a senior headcount. We set direction, mentor the people you already have, and keep the roadmap honest when the hype cycle turns again.</p>
+                        <span class="card__more">Read more
+                            <svg viewBox="0 0 74 8" aria-hidden="true" focusable="false"><path d="M1 5C12 2 20 7 31 4S52 1 62 6s10-1 11-2"/></svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ § 02 HOW WE WORK ============ -->
+        <section id="how-we-work" class="section surface-dark grid-paper">
+            <div class="container">
+                <div class="section-head section-head--center reveal">
+                    <p class="section-label"><b>§ 02</b> How we work</p>
+                    <h2>We run it like an experiment</h2>
+                    <p class="section-lede">Consulting borrowed most of its habits from sales and almost none from science. We prefer the other order: state what you expect, build the smallest thing that tests it, then check honestly whether it held.</p>
+                </div>
+
+                <ol class="protocol">
+                    <li class="step reveal">
+                        <div class="step__dot">01</div>
+                        <div>
+                            <span class="step__greek">Observe</span>
+                            <h3>Look first</h3>
+                            <p>We sit with your data, your team and the workflow as it actually runs. A surprising amount of what everyone "knows" turns out never to have been measured.</p>
+                        </div>
+                    </li>
+                    <li class="step reveal">
+                        <div class="step__dot">02</div>
+                        <div>
+                            <span class="step__greek">Hypothesise</span>
+                            <h3>Commit in advance</h3>
+                            <p>We write down what we expect, and the number that would tell us we were wrong. Agreed before the build starts, so nobody moves the goalposts later.</p>
+                        </div>
+                    </li>
+                    <li class="step reveal">
+                        <div class="step__dot">03</div>
+                        <div>
+                            <span class="step__greek">Build</span>
+                            <h3>Smallest useful thing</h3>
+                            <p>The least machinery that can genuinely test the hypothesis, put in front of real users. Not a prototype that only works on the demo data.</p>
+                        </div>
+                    </li>
+                    <li class="step reveal">
+                        <div class="step__dot">04</div>
+                        <div>
+                            <span class="step__greek">Measure</span>
+                            <h3>Report either way</h3>
+                            <p>Against the baseline we agreed on. If it worked, you get the number. If it didn't, you get that number too, plus what we learned and what we'd try next.</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <p class="annot reveal" style="justify-content:center;margin-top:3rem">
+                    <svg viewBox="0 0 34 34" aria-hidden="true" focusable="false"><path d="M4 6C10 8 20 14 27 27"/><path d="M20 27.5 27.5 28.5 27 21"/></svg>
+                    null results are still results
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ § 03 PEER REVIEW ============ -->
+        <section id="peer-review" class="section surface-paper">
+            <div class="container">
+                <div class="section-head section-head--center reveal">
+                    <p class="section-label"><b>§ 03</b> Peer review</p>
+                </div>
+
+                <figure class="review reveal">
+                    <div class="review__meta">
+                        <span class="review__badge">Reviewer 2</span>
+                        <span>Manuscript ID PRO-2024-011</span>
+                        <span class="review__verdict">Verdict: accept</span>
                     </div>
-                </a>
+                    <blockquote>
+                        <p>"Prosop.ai's strategic and scientific consulting for AI integration has made all the difference for the Vericode and dott.ai products."</p>
+                    </blockquote>
+                    <figcaption><cite>Marcelo Marchi — CEO, Vericode Tecnologia</cite></figcaption>
+                </figure>
 
+                <p class="annot review__aside reveal">
+                    <svg viewBox="0 0 34 34" aria-hidden="true" focusable="false"><path d="M4 6C10 8 20 14 27 27"/><path d="M20 27.5 27.5 28.5 27 21"/></svg>
+                    Reviewer 2 is never this kind. We checked twice.
+                </p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonial Section -->
-    <section id="testimonial" class="testimonial">
-        <div class="container">
-            <blockquote class="testimonial-quote">
-                <div class="testimonial-content">
-                    <p>"Prosop.ai's strategic and scientific consulting for AI integration has made all the difference for the Vericode and dott.ai products."</p>
-                    <cite class="testimonial-author">— Marcelo Marchi, CEO of Vericode Tecnologia</cite>
+        <!-- ============ § 04 TRUSTED BY ============ -->
+        <section id="trusted-by" class="section surface-paper grid-paper">
+            <div class="container">
+                <div class="section-head section-head--center reveal">
+                    <p class="section-label"><b>§ 04</b> Trusted by</p>
+                    <h2>Teams we've worked with</h2>
                 </div>
-            </blockquote>
-        </div>
-    </section>
 
-    <!-- Trusted By Section -->
-    <section id="trusted-by" class="trusted-by">
-        <div class="container">
-            <h2>Trusted by:</h2>
-            <div class="trusted-logos">
-                <div class="logo-item">
-                    <img src="images/logo_vericode.png" alt="Vericode">
-                </div>
-                <div class="logo-item">
-                    <img src="images/logo_arborsquare.jpg" alt="Arbor Square">
-                </div>
-                <div class="logo-item">
-                    <img src="images/logo_dott.png" alt="Dott">
-                </div>
-                <div class="logo-item">
-                    <img src="images/logo_firstai.png" alt="First AI">
-                </div>
-                <div class="logo-item">
-                    <img src="images/logo_perlonai.png" alt="Perlon AI">
-                </div>
-                <div class="logo-item">
-                    <img src="images/logo_perlonlabs.png" alt="Perlon Labs">
-                </div>
-                <div class="logo-item">
-                    <img src="images/logo_upstreamly.png" alt="Upstreamly">
-                </div>
-                <div class="logo-item">
-                    <img src="images/logo_aimakerspace.png" alt="AI Makerspace">
+                <div class="logo-grid reveal">
+                    <div class="logo-cell"><img src="images/logo_vericode.png" alt="Vericode" width="3088" height="646" loading="lazy" decoding="async"></div>
+                    <div class="logo-cell"><img src="images/logo_arborsquare.jpg" alt="Arbor Square" width="3297" height="1172" loading="lazy" decoding="async"></div>
+                    <div class="logo-cell"><img src="images/logo_dott.png" alt="dott.ai" width="927" height="354" loading="lazy" decoding="async"></div>
+                    <div class="logo-cell"><img src="images/logo_firstai.png" alt="First AI" width="600" height="154" loading="lazy" decoding="async"></div>
+                    <div class="logo-cell"><img src="images/logo_perlonai.png" alt="Perlon AI" width="1275" height="281" loading="lazy" decoding="async"></div>
+                    <div class="logo-cell"><img src="images/logo_perlonlabs.png" alt="Perlon Labs" width="1334" height="225" loading="lazy" decoding="async"></div>
+                    <div class="logo-cell logo-cell--square"><img src="images/logo_upstreamly.png" alt="Upstreamly" width="306" height="236" loading="lazy" decoding="async"></div>
+                    <div class="logo-cell logo-cell--square"><img src="images/logo_aimakerspace.png" alt="AI Makerspace" width="280" height="280" loading="lazy" decoding="async"></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
+        <div class="edge"></div>
+
+        <!-- ============ § 05 CONTACT ============ -->
+        <section id="contact" class="section surface-paper">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="section-label"><b>§ 05</b> Contact</p>
+                    <h2>Let's find out whether you have a problem worth solving</h2>
+                    <p class="section-lede">A first conversation costs nothing and is genuinely useful either way. Sometimes it ends with a proposal. Sometimes it ends with us telling you that you don't need AI for this, which is also a good outcome.</p>
+                </div>
+
+                <div class="contact__grid">
+                    <div class="contact__card reveal">
+                        <!-- CONFIRM: replace with the real inbox and LinkedIn URL before publishing -->
+                        <div class="contact__list">
+                            <div class="contact__item">
+                                <span class="contact__key">Email</span>
+                                <a class="contact__val" href="mailto:hello@prosop.ai">hello@prosop.ai</a>
+                            </div>
+                            <div class="contact__item">
+                                <span class="contact__key">LinkedIn</span>
+                                <a class="contact__val" href="https://www.linkedin.com/company/prosop-ai" target="_blank" rel="noopener">linkedin.com/company/prosop-ai</a>
+                            </div>
+                            <div class="contact__item">
+                                <span class="contact__key">Response time</span>
+                                <span class="contact__val">Within two working days</span>
+                            </div>
+                        </div>
+
+                        <div class="btn-row">
+                            <a class="btn btn--primary" href="mailto:hello@prosop.ai?subject=Project%20enquiry">Write to us</a>
+                        </div>
+                    </div>
+
+                    <div class="reveal">
+                        <h3>Worth putting in the first email</h3>
+                        <ul class="checklist">
+                            <li>The decision or process you wish were faster, cheaper or less painful</li>
+                            <li>What you've already tried, including the things that didn't work</li>
+                            <li>Roughly what data exists, and who owns it</li>
+                            <li>How you'd know, six months from now, that this was worth it</li>
+                        </ul>
+
+                        <p class="annot" style="margin-top:2rem">
+                            <svg viewBox="0 0 34 34" aria-hidden="true" focusable="false"><path d="M4 6C10 8 20 14 27 27"/><path d="M20 27.5 27.5 28.5 27 21"/></svg>
+                            no NDA needed to say hello
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer class="footer">
+        <svg class="footer__stars" viewBox="0 0 1200 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <path d="M90 40 170 86 275 54 390 96 505 44 620 78 742 36 860 90 975 52 1100 84" fill="none" stroke-width="1" opacity="0.55"/>
+            <circle cx="90" cy="40" r="2.5"/><circle cx="170" cy="86" r="2"/><circle cx="275" cy="54" r="3"/>
+            <circle cx="390" cy="96" r="2"/><circle cx="505" cy="44" r="2.5"/><circle cx="620" cy="78" r="2"/>
+            <circle cx="742" cy="36" r="3"/><circle cx="860" cy="90" r="2"/><circle cx="975" cy="52" r="2.5"/>
+            <circle cx="1100" cy="84" r="2"/>
+            <circle cx="330" cy="20" r="1.4" opacity="0.6"/><circle cx="700" cy="112" r="1.4" opacity="0.6"/>
+            <circle cx="1040" cy="18" r="1.4" opacity="0.6"/><circle cx="200" cy="120" r="1.4" opacity="0.6"/>
+        </svg>
+
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="images/cropped_transparent_logo_white_letters.png" alt="Prosop.ai Logo" style="height: 60px; width: auto; margin-bottom: 1rem;">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__logo">
+                        <a href="index.html" aria-label="Prosop.ai — home">
+                            <img src="images/cropped_transparent_logo_white_letters.png" alt="Prosop.ai" width="1920" height="568" loading="lazy">
+                        </a>
                     </div>
-                    <p>Designing intelligent systems one project at a time.</p>
+                    <p>Designing intelligent systems one project at a time. Built on the stubborn belief that a claim isn't true until someone measures it.</p>
                 </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
+                <div>
+                    <h4>Site</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#projects">What We Do</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#what-we-do">What we do</a></li>
+                        <li><a href="index.html#how-we-work">How we work</a></li>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="about.html#join">Join us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <ul class="social-links">
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">Email</a></li>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="strategy.html">AI Strategy</a></li>
+                        <li><a href="development.html">Custom Development</a></li>
+                        <li><a href="leadership.html">Fractional Leadership</a></li>
+                    </ul>
+                    <h4 style="margin-top:1.5rem">Connect</h4>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/company/prosop-ai" target="_blank" rel="noopener">LinkedIn</a></li>
+                        <li><a href="mailto:hello@prosop.ai">hello@prosop.ai</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Prosop.ai. All rights reserved.</p>
+            <div class="footer__bottom">
+                <p>&copy; <span id="year">2026</span> Prosop.ai. All rights reserved.</p>
+                <p class="footer__version">v0.1.0 — last calibrated Aug 2026</p>
             </div>
         </div>
     </footer>
-
-    <!-- JavaScript for Menu Toggle -->
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const menuClose = document.getElementById('menuClose');
-        const slideMenu = document.getElementById('slideMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const menuLinks = document.querySelectorAll('.menu-links a');
-
-        function openMenu() {
-            slideMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMenu() {
-            slideMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        menuToggle.addEventListener('click', openMenu);
-        menuClose.addEventListener('click', closeMenu);
-        menuOverlay.addEventListener('click', closeMenu);
-
-        // Close menu when clicking on a link
-        menuLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        // Close menu with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && slideMenu.classList.contains('active')) {
-                closeMenu();
-            }
-        });
-    </script>
 </body>
 </html>
-

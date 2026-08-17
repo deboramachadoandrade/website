@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Secrets — image_creation.py reads OPENAI_API_KEY from here
+.env
+
+# Images — only assets the site actually references are tracked.
+# Already-tracked files stay tracked; add a new one with: git add -f images/<file>
+images/*
+
+# Scratch
+.tmp-ql/
+.audit/
+.shots/
