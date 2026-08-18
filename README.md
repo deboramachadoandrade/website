@@ -63,8 +63,8 @@ Any static host works: GitHub Pages, Netlify, Vercel, Cloudflare Pages. Upload t
 
 ## Regenerating images
 
-Requires Pillow (`pip install pillow`):
+Requires Pillow (`pip install pillow`). Only the assets the pages actually reference live in `images/`; the full-resolution originals are kept outside the repository, so point these commands at wherever you have them.
 
-- **Portrait** — `sips -s format jpeg -s formatOptions 72 --resampleWidth 900 "images/IMG_0006_2.png" --out images/portrait-900.jpg`
+- **Portrait** — `sips -s format jpeg -s formatOptions 72 --resampleWidth 900 <original> --out images/portrait-900.jpg`
 - **Video poster** — `qlmanage -t -s 1400 -o . "images/Owl_*.mp4"`, then convert the PNG with `sips`
 - **Icons** — `images/icon-512.png`, `apple-touch-icon.png` and `favicon.ico` are cropped from the orange mark in `Transparent Logo_black_letters.png`
