@@ -1521,6 +1521,91 @@ a.contact__val:hover {
     margin-top: 2px;
 }
 
+/* Named engagements, quieter than the rest of the notebook */
+.cases {
+    margin-top: var(--space-xl);
+}
+
+.cases .section-label {
+    margin-bottom: var(--space-md);
+}
+
+.cases__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.case {
+    padding: var(--space-md);
+    border: 1px solid var(--grey-line);
+    background: var(--white);
+    max-width: var(--measure);
+}
+
+.case__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-sm);
+}
+
+.case p {
+    color: var(--grey-deep);
+}
+
+.case p + p {
+    margin-top: var(--space-sm);
+}
+
+/* Home-page trace of the three service cases */
+.cases--index {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--grey-line);
+}
+
+.case-tease-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-sm);
+}
+
+.case-tease {
+    display: block;
+    padding: var(--space-md);
+    border: 1px solid var(--grey-line);
+    background: var(--white);
+    transition: border-color var(--t-mid), background-color var(--t-mid);
+}
+
+.case-tease:hover {
+    border-color: var(--charcoal);
+}
+
+.case-tease__service {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre-deep);
+    margin-bottom: var(--space-2xs);
+}
+
+.case-tease strong {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 1.0625rem;
+    margin-bottom: var(--space-2xs);
+}
+
+.case-tease p {
+    color: var(--grey-deep);
+    font-size: 0.9375rem;
+}
+
 /* Cross-links to the other two services */
 .sibling-nav {
     display: grid;
@@ -1838,7 +1923,9 @@ a.contact__val:hover {
     .card,
     .principle,
     .contact__card,
-    .spec {
+    .spec,
+    .case,
+    .case-tease {
         padding: var(--space-sm);
     }
 
