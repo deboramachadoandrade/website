@@ -45,14 +45,6 @@ Type is IBM Plex Sans for body, IBM Plex Mono for headings and labels, and Cavea
 
 Diagrams are inline SVG rather than images. They share a `#sketch` filter — a turbulence displacement map defined at the top of each page — which is what gives clean vector paths their wobble.
 
-## Before publishing
-
-Search for `CONFIRM` and `[[` across the HTML files. Currently outstanding:
-
-- `hello@prosop.ai` — used in the contact section, footer and console message
-- `linkedin.com/company/prosop-ai` — contact section and footer
-- Founder name, degree and institution on `about.html`
-
 ## Contact form
 
 The contact section is deliberately `mailto:` only, since static hosting cannot accept a form POST. To add a real form, drop a `<form>` into `.contact__card` and point its `action` at [Formspree](https://formspree.io) or, if you deploy to Netlify, add the `netlify` attribute.

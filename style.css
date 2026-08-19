@@ -473,6 +473,113 @@ code,
     width: 30px;
 }
 
+/* Running head: numbered like the drawer, quiet like a notebook margin */
+.site-nav {
+    display: none;
+}
+
+.site-nav ul {
+    display: flex;
+    align-items: stretch;
+    list-style: none;
+}
+
+.site-nav a {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.2rem;
+    min-height: 2.6rem;
+    padding: 0.15rem 1rem 0.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--charcoal);
+    white-space: nowrap;
+}
+
+.site-nav li:first-child a {
+    padding-left: 0;
+}
+
+.site-nav li:last-child a {
+    padding-right: 0;
+}
+
+.site-nav li + li {
+    position: relative;
+}
+
+.site-nav li + li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0.45rem;
+    width: 1px;
+    height: 0.8rem;
+    background: var(--grey-line);
+}
+
+.site-nav__num {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--ochre-deep);
+    line-height: 1;
+    min-height: 0.625rem;
+}
+
+.site-nav__label {
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: border-color var(--t-mid), color var(--t-fast);
+}
+
+.site-nav a:hover {
+    color: var(--ochre-deep);
+}
+
+.site-nav a:hover .site-nav__num {
+    color: var(--ochre);
+}
+
+.site-nav a[aria-current='page'] .site-nav__label {
+    border-bottom-color: var(--orange);
+}
+
+.site-nav a:hover .tag,
+.site-nav a:focus-visible .tag {
+    background: var(--orange-soft);
+}
+
+@media (min-width: 1120px) {
+    .site-nav {
+        display: block;
+        margin-left: auto;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+}
+
+@media (min-width: 1120px) and (max-width: 1280px) {
+    .site-nav a {
+        padding-inline: 0.7rem;
+        font-size: 0.75rem;
+    }
+
+    .site-nav li:first-child a {
+        padding-left: 0;
+    }
+
+    .site-nav li:last-child a {
+        padding-right: 0;
+    }
+}
+
 /* 09  SLIDE MENU ========================================================= */
 
 .slide-menu {
@@ -1394,33 +1501,6 @@ a.contact__val:hover {
 .principle p {
     font-size: 0.9375rem;
     color: var(--grey-deep);
-}
-
-/* Short facts strip, styled like measured quantities */
-.facts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: var(--space-md);
-    padding: var(--space-md) 0;
-    border-block: 1px solid var(--grey-line);
-    margin-bottom: var(--space-lg);
-}
-
-.fact__value {
-    font-family: var(--font-mono);
-    font-size: clamp(1.5rem, 3vw, 2.125rem);
-    font-weight: 700;
-    color: var(--charcoal);
-    line-height: 1.1;
-}
-
-.fact__label {
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--grey-deep);
-    margin-top: var(--space-3xs);
 }
 
 /* 20  SERVICE PAGES ====================================================== */

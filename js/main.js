@@ -74,6 +74,18 @@
             if (event.target.closest('a')) { closeMenu(); }
         });
 
+        if (window.matchMedia) {
+            var desktopNav = window.matchMedia('(min-width: 1120px)');
+            var closeOnDesktop = function (mql) {
+                if (mql.matches && isOpen()) { closeMenu(); }
+            };
+            if (desktopNav.addEventListener) {
+                desktopNav.addEventListener('change', closeOnDesktop);
+            } else if (desktopNav.addListener) {
+                desktopNav.addListener(closeOnDesktop);
+            }
+        }
+
         document.addEventListener('keydown', function (event) {
             if (!isOpen()) { return; }
 
@@ -196,7 +208,7 @@
 
     if (window.console && console.log) {
         console.log(
-            '%c   ,_,   \n  (o,o)   Prosop.ai\n  {`"`}   AI for forward thinkers\n  -"-"-   \n',
+            '%c   ,_,   \n  (o,o)   Prosop.ai\n  {`"`}   The AI that\'s worth doing\n  -"-"-   \n',
             'color:#FFB203;font-family:monospace;font-size:12px;line-height:1.4'
         );
         console.log(
