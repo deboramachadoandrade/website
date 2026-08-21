@@ -16,7 +16,7 @@
      13  Hero
      14  Service cards
      15  Protocol
-     16  Peer review
+     16  A note from a client
      17  Trusted by
      18  Contact
      19  About
@@ -1239,42 +1239,22 @@ code,
     color: var(--grey-deep);
 }
 
-/* 16  PEER REVIEW ======================================================== */
+/* 16  A NOTE FROM A CLIENT =============================================== */
+
+.review-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(180px, 0.55fr);
+    gap: var(--space-lg);
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+}
 
 .review {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
     border: 1px solid var(--grey-line);
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.review__meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-2xs) var(--space-sm);
-    padding-bottom: var(--space-sm);
-    margin-bottom: var(--space-md);
-    border-bottom: 1px solid var(--grey-line);
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--grey-deep);
-}
-
-.review__badge {
-    padding: 0.3rem 0.6rem;
-    font-weight: 700;
-    color: var(--charcoal);
-    background: var(--orange);
-}
-
-.review__verdict {
-    margin-left: auto;
-    color: var(--orange);
-    font-weight: 600;
+    background: var(--white);
+    box-shadow: 6px 6px 0 rgba(43, 43, 43, 0.07);
 }
 
 .review blockquote p {
@@ -1284,18 +1264,26 @@ code,
 }
 
 .review cite {
-    display: block;
+    display: inline-block;
     margin-top: var(--space-md);
+    padding-bottom: 3px;
+    border-bottom: 2px solid var(--orange);
     font-family: var(--font-mono);
     font-size: 0.875rem;
     font-style: normal;
-    color: var(--grey-deep);
+    color: var(--charcoal);
 }
 
-.review__aside {
-    max-width: 780px;
-    margin: var(--space-sm) auto 0;
-    padding-left: var(--space-md);
+.review__drawing {
+    display: flex;
+    justify-content: center;
+}
+
+.review__drawing .diagram {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    overflow: visible;
 }
 
 /* 17  TRUSTED BY ========================================================= */
@@ -1893,7 +1881,8 @@ a.contact__val:hover {
     .hero__grid,
     .contact__grid,
     .about__grid,
-    .service__grid {
+    .service__grid,
+    .review-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1965,10 +1954,6 @@ a.contact__val:hover {
         max-height: 62px;
     }
 
-    .review__verdict {
-        margin-left: 0;
-    }
-
     .footer__bottom {
         justify-content: flex-start;
     }
@@ -2005,7 +1990,8 @@ a.contact__val:hover {
     .contact__card,
     .spec,
     .case,
-    .case-tease {
+    .case-tease,
+    .review {
         padding: var(--space-sm);
     }
 

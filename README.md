@@ -15,7 +15,7 @@ Then visit <http://localhost:8000>.
 ## Structure
 
 ```
-index.html          Home: hero, services, how we work, peer review, trusted by, contact
+index.html          Home: hero, services, how we work, a client note, trusted by, contact
 about.html          About and principles
 strategy.html       Service 01 — AI Strategy & Consultancy
 development.html    Service 02 — Custom AI Development
