@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OG card template</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- The site stylesheet, so the cards inherit the real tokens and the
+         .grid-paper / .diagram rules rather than a drifting copy of them.
+         Everything here is namespaced og-card__* to stay clear of the site's
+         own .card block, which uses the `background` shorthand. -->
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        /* The card is a fixed 1200x630 plate; og.mjs screenshots this element only. */
+        body {
+            margin: 0;
+            background: #555;
+        }
+
+        .og-card {
+            position: relative;
+            width: 1200px;
+            height: 630px;
+            overflow: hidden;
+            background-color: var(--paper);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 84px;
+
+            /* Social platforms recompress and downscale hard, so the paper grid
+               runs heavier here than it does on the site itself */
+            --grid-size: 34px;
+            --grid-line: rgba(43, 43, 43, 0.10);
+            --grid-line-strong: rgba(212, 162, 55, 0.34);
+        }
+
+        /* Registration marks, borrowed from .plate */
+        .og-corner {
+            position: absolute;
+            width: 34px;
+            height: 34px;
+            border: 4px solid var(--orange);
+            z-index: 3;
+        }
+
+        .og-corner--tl { top: 34px; left: 34px; border-right: 0; border-bottom: 0; }
+        .og-corner--tr { top: 34px; right: 34px; border-left: 0; border-bottom: 0; }
+        .og-corner--bl { bottom: 34px; left: 34px; border-right: 0; border-top: 0; }
+        .og-corner--br { bottom: 34px; right: 34px; border-left: 0; border-top: 0; }
+
+        .og-card__inner {
+            position: relative;
+            z-index: 2;
+            max-width: 860px;
+        }
+
+        /* Leave the right margin clear when a diagram is sitting in it */
+        .og-card.has-deco .og-card__inner { max-width: 700px; }
+
+        .og-card__logo {
+            height: 96px;
+            width: auto;
+            margin-bottom: 26px;
+            margin-left: -10px;
+        }
+
+        .og-card__label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-mono);
+            font-size: 19px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--grey-deep);
+            margin: 0 0 18px;
+        }
+
+        .og-card__label b {
+            color: var(--ochre-deep);
+            font-weight: 700;
+        }
+
+        .og-card__title {
+            font-family: var(--font-mono);
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -0.025em;
+            color: var(--charcoal);
+            margin: 0;
+            text-wrap: balance;
+        }
+
+        /* Long headlines step down rather than wrapping to three lines */
+        .og-card.is-long .og-card__title { font-size: 54px; }
+
+        .og-card__wave {
+            display: block;
+            width: 420px;
+            height: 42px;
+            margin: 20px 0 18px;
+            overflow: visible;
+        }
+
+        .og-card__wave path {
+            fill: none;
+            stroke: var(--orange);
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+
+        .og-card__sub {
+            font-family: var(--font-sans);
+            font-size: 25px;
+            line-height: 1.45;
+            color: var(--grey-deep);
+            margin: 0;
+            max-width: 680px;
+        }
+
+        .og-card__url {
+            position: absolute;
+            right: 84px;
+            bottom: 58px;
+            z-index: 2;
+            font-family: var(--font-mono);
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin: 0;
+        }
+
+        /* Decorative diagram in the right margin, one per service */
+        .og-card__deco {
+            position: absolute;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-58%);
+            width: 300px;
+            opacity: 0.55;
+            z-index: 1;
+            stroke: var(--ochre);
+            fill: none;
+            pointer-events: none;
+            display: none;
+        }
+
+        .og-card__deco.is-active { display: block; }
+    </style>
+</head>
+<body>
+    <svg class="svg-defs" aria-hidden="true" focusable="false">
+        <filter id="sketch" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="7" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+
+    <div class="og-card grid-paper" id="card">
+        <span class="og-corner og-corner--tl"></span>
+        <span class="og-corner og-corner--tr"></span>
+        <span class="og-corner og-corner--bl"></span>
+        <span class="og-corner og-corner--br"></span>
+
+        <!-- Strategy: locating the minimum -->
+        <svg class="og-card__deco diagram" data-deco="curve" viewBox="0 0 220 150" aria-hidden="true">
+            <g filter="url(#sketch)">
+                <path class="faint" d="M18 140H206M18 140V14"/>
+                <path d="M22 22C23.47 25.29 27.87 35.52 30.8 41.76C33.73 48 36.67 53.89 39.6 59.44C42.53 64.99 45.47 70.19 48.4 75.04C51.33 79.89 54.27 84.4 57.2 88.56C60.13 92.72 63.07 96.53 66 100C68.93 103.5 71.87 106.6 74.8 109.4C77.73 112.1 80.67 114.6 83.6 116.6C86.53 118.7 89.47 120.5 92.4 121.8C95.33 123.2 98.27 124.3 101.2 125C104.1 125.7 107.1 126 110 126C112.9 126 115.9 125.7 118.8 125C121.7 124.3 124.7 123.2 127.6 121.8C130.5 120.5 133.5 118.7 136.4 116.6C139.3 114.6 142.3 112.1 145.2 109.4C148.1 106.6 151.1 103.5 154 100C156.9 96.53 159.9 92.72 162.8 88.56C165.7 84.4 168.7 79.89 171.6 75.04C174.5 70.19 177.5 64.99 180.4 59.44C183.3 53.89 186.3 48 189.2 41.76C192.1 35.52 196.5 25.29 198 22"/>
+            </g>
+            <circle class="accent-fill" cx="110" cy="117" r="9"/>
+        </svg>
+
+        <!-- Development: two paths, recombined -->
+        <svg class="og-card__deco diagram" data-deco="flow" viewBox="0 0 220 150" aria-hidden="true">
+            <g filter="url(#sketch)">
+                <path d="M20 108H55M55 108H155M55 108V48M55 48H155M155 108V48"/>
+                <path class="accent" d="M155 48H198M155 48V16"/>
+                <path class="dashed" d="M46 117 64 99"/>
+                <path class="dashed" d="M146 57 164 39"/>
+                <path d="M46 57 64 39M146 117 164 99"/>
+            </g>
+            <circle class="accent-fill" cx="198" cy="48" r="5"/>
+            <circle class="accent-fill" cx="155" cy="16" r="5"/>
+        </svg>
+
+        <!-- Leadership: a stable configuration -->
+        <svg class="og-card__deco diagram" data-deco="orbit" viewBox="0 0 220 150" aria-hidden="true">
+            <g filter="url(#sketch)">
+                <ellipse class="faint" cx="110" cy="75" rx="86" ry="32"/>
+                <ellipse class="faint" cx="110" cy="75" rx="86" ry="32" transform="rotate(60 110 75)"/>
+                <ellipse class="faint" cx="110" cy="75" rx="86" ry="32" transform="rotate(-60 110 75)"/>
+            </g>
+            <circle class="accent-fill" cx="110" cy="75" r="13"/>
+            <circle class="dot" cx="196" cy="75" r="6"/>
+            <circle class="dot" cx="64.5" cy="51.7" r="6"/>
+            <circle class="dot" cx="112.5" cy="126.1" r="6"/>
+        </svg>
+
+        <!-- Home: measurement against a baseline, with the error bars shown -->
+        <svg class="og-card__deco diagram" data-deco="steps" viewBox="0 0 220 150" aria-hidden="true">
+            <g filter="url(#sketch)">
+                <path class="faint" d="M24 128H204M24 128V20"/>
+                <path class="faint dashed" d="M42 112 190 40"/>
+                <path d="M52 84v34M44 84h16M44 118h16"/>
+                <path d="M92 66v30M84 66h16M84 96h16"/>
+                <path d="M132 48v28M124 48h16M124 76h16"/>
+                <path d="M172 34v24M164 34h16M164 58h16"/>
+            </g>
+            <circle class="accent-fill" cx="52" cy="101" r="5"/>
+            <circle class="accent-fill" cx="92" cy="81" r="5"/>
+            <circle class="accent-fill" cx="132" cy="62" r="5"/>
+            <circle class="accent-fill" cx="172" cy="46" r="5"/>
+        </svg>
+
+        <div class="og-card__inner">
+            <img class="og-card__logo" src="../images/Transparent Logo_black_letters.png" alt="Prosop.ai">
+            <p class="og-card__label"><b id="mark">§</b> <span id="label"></span></p>
+            <h1 class="og-card__title" id="title"></h1>
+
+            <svg class="og-card__wave" viewBox="0 0 460 46" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+                <path d="M0 3C1.917 3.994 7.667 5.998 11.5 8.965C15.33 11.93 19.17 16.93 23 20.81C26.83 24.68 30.67 29.37 34.5 32.2C38.33 35.04 42.17 37.24 46 37.84C49.83 38.43 53.67 37.42 57.5 35.77C61.33 34.12 65.17 30.77 69 27.94C72.83 25.1 76.67 21.29 80.5 18.75C84.33 16.22 88.17 13.8 92 12.72C95.83 11.64 99.67 11.58 103.5 12.29C107.3 13 111.2 15.03 115 16.96C118.8 18.9 122.7 21.81 126.5 23.9C130.3 26 134.2 28.3 138 29.55C141.8 30.8 145.7 31.48 149.5 31.4C153.3 31.32 157.2 30.27 161 29.06C164.8 27.85 168.7 25.78 172.5 24.15C176.3 22.53 180.2 20.53 184 19.31C187.8 18.09 191.7 17.11 195.5 16.82C199.3 16.52 203.2 16.89 207 17.55C210.8 18.21 214.7 19.58 218.5 20.76C222.3 21.94 226.2 23.55 230 24.63C233.8 25.71 237.7 26.76 241.5 27.25C245.3 27.73 249.2 27.8 253 27.53C256.8 27.27 260.7 26.44 264.5 25.65C268.3 24.85 272.2 23.63 276 22.75C279.8 21.86 283.7 20.87 287.5 20.33C291.3 19.78 295.2 19.46 299 19.47C302.8 19.48 306.7 19.9 310.5 20.39C314.3 20.88 318.2 21.74 322 22.42C325.8 23.1 329.7 23.95 333.5 24.47C337.3 25 341.2 25.43 345 25.57C348.8 25.72 352.7 25.58 356.5 25.32C360.3 25.06 364.2 24.5 368 24.01C371.8 23.52 375.7 22.84 379.5 22.38C383.3 21.92 387.2 21.47 391 21.25C394.8 21.03 398.7 20.99 402.5 21.08C406.3 21.18 410.2 21.52 414 21.84C417.8 22.17 421.7 22.68 425.5 23.05C429.3 23.43 433.2 23.85 437 24.09C440.8 24.32 444.7 24.47 448.5 24.48C452.3 24.49 458.1 24.18 460 24.12"/>
+            </svg>
+
+            <p class="og-card__sub" id="sub"></p>
+        </div>
+
+        <p class="og-card__url">prosop.ai</p>
+    </div>
+
+    <script>
+        (function () {
+            var q = new URLSearchParams(window.location.search);
+            var card = document.getElementById('card');
+            var title = q.get('title') || '';
+
+            document.getElementById('label').textContent = q.get('label') || '';
+            document.getElementById('title').textContent = title;
+            document.getElementById('sub').textContent = q.get('sub') || '';
+
+            var mark = q.get('mark');
+            if (mark !== null) { document.getElementById('mark').textContent = mark; }
+
+            // Headlines past this length need the smaller size to stay on two lines
+            if (title.length > 30) { card.classList.add('is-long'); }
+
+            var deco = q.get('deco');
+            if (deco) {
+                var el = document.querySelector('.og-card__deco[data-deco="' + deco + '"]');
+                if (el) {
+                    el.classList.add('is-active');
+                    card.classList.add('has-deco');
+                }
+            }
+        }());
+    </script>
+</body>
+</html>

@@ -91,7 +91,7 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
     /* Clears the fixed header when jumping to #contact and friends */
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 7rem;
     -webkit-text-size-adjust: 100%;
 }
 
@@ -422,13 +422,13 @@ code,
 }
 
 .header__logo img {
-    height: 68px;
+    height: 80px;
     width: auto;
     transition: height var(--t-mid), opacity var(--t-fast);
 }
 
 .header.is-scrolled .header__logo img {
-    height: 48px;
+    height: 56px;
 }
 
 .header__logo a:hover img {
@@ -1288,16 +1288,20 @@ code,
 
 /* 17  TRUSTED BY ========================================================= */
 
+/* Flex rather than grid so a short final row centres instead of hanging left */
 .logo-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-sm);
     max-width: 960px;
     margin: 0 auto;
 }
 
-/* One uniform box per logo instead of per-logo height overrides */
+/* One uniform box per logo instead of per-logo height overrides.
+   228px basis puts four on a row at the 960px cap. */
 .logo-cell {
+    flex: 0 1 228px;
     display: grid;
     place-items: center;
     height: 116px;
@@ -1851,6 +1855,16 @@ a.contact__val:hover {
     max-width: none;
 }
 
+.footer .footer__legal {
+    flex: 1 0 100%;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    letter-spacing: 0.01em;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.42);
+    max-width: none;
+}
+
 /* 23  REVEAL ============================================================= */
 
 .reveal {
@@ -1925,11 +1939,11 @@ a.contact__val:hover {
     }
 
     .header__logo img {
-        height: 54px;
+        height: 62px;
     }
 
     .header.is-scrolled .header__logo img {
-        height: 42px;
+        height: 46px;
     }
 
     .footer__grid {
@@ -1937,11 +1951,8 @@ a.contact__val:hover {
         gap: var(--space-md);
     }
 
-    .logo-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .logo-cell {
+        flex-basis: calc(50% - var(--space-sm) / 2);
         height: 100px;
         padding: var(--space-xs);
     }

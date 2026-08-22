@@ -16,15 +16,25 @@ Then visit <http://localhost:8000>.
 
 ```
 index.html          Home: hero, services, how we work, a client note, trusted by, contact
-about.html          About and principles
+about.html          About, principles and the open position
 strategy.html       Service 01 — AI Strategy & Consultancy
 development.html    Service 02 — Custom AI Development
 leadership.html     Service 03 — Fractional AI Leadership
 404.html            Not found
 style.css           All styling, organised in 25 numbered sections
 js/main.js          Menu, scroll ruler, reveal animations — shared by every page
-images/             Logos, portrait, video, generated icons
+images/             Logos, portrait, video, generated icons, social cards
 image_creation.py   Standalone helper for generating imagery with the OpenAI API
+
+CNAME               Custom domain for GitHub Pages
+.nojekyll           Skip Jekyll processing
+robots.txt          Allows everything, points at the sitemap
+sitemap.xml         The five indexable pages
+
+tools/og.html       1200x630 social card template, styled from style.css
+tools/og.mjs        Renders images/og-*.png
+tools/poster.mjs    Pulls the hero video poster frame
+tools/check.mjs     Pre-launch check — run before every push
 ```
 
 There is no templating, so the header and footer markup is repeated in each HTML file. The blocks are byte-identical on purpose: to change navigation everywhere, find and replace across all six pages.
@@ -49,14 +59,47 @@ Diagrams are inline SVG rather than images. They share a `#sketch` filter — a 
 
 The contact section is deliberately `mailto:` only, since static hosting cannot accept a form POST. To add a real form, drop a `<form>` into `.contact__card` and point its `action` at [Formspree](https://formspree.io) or, if you deploy to Netlify, add the `netlify` attribute.
 
+## Before you push
+
+```bash
+node tools/check.mjs
+```
+
+Serves the repo and verifies internal links and anchors, every referenced asset, console errors, horizontal overflow at 390 / 768 / 1440, the deploy files, canonical and Open Graph tags, and that the JSON-LD parses. Exits non-zero if anything is wrong.
+
+It borrows `playwright-core` from `.audit/`, which is untracked. If it is missing:
+
+```bash
+npm --prefix .audit install
+```
+
 ## Deploying
 
-Any static host works: GitHub Pages, Netlify, Vercel, Cloudflare Pages. Upload the repository root as-is. `404.html` is picked up automatically by all four.
+Live on **GitHub Pages** from `main` at the repository root, with `CNAME` holding the custom domain. The repository must stay public for Pages to serve on a free plan.
+
+DNS lives at GoDaddy. The apex `A` records point at GitHub (`185.199.108.153`, `.109.153`, `.110.153`, `.111.153`) and `www` is a `CNAME` to `deboramachadoandrade.github.io`. **Leave the `MX` records alone** — Google Workspace serves `hello@prosop.ai` from them.
+
+## Social cards
+
+`images/og-*.png` are generated, not hand-made:
+
+```bash
+node tools/og.mjs
+```
+
+The template is `tools/og.html`, which links the real `style.css`, so the cards track the design tokens. Note that everything in it is namespaced `og-card__*`: the site's own `.card` block uses the `background` shorthand and would otherwise wipe out the graph-paper grid.
+
+Each page points at its card with an absolute `og:image` URL. Relative URLs are silently rejected by LinkedIn and X.
+
+## The job posting
+
+`about.html` carries `JobPosting` structured data, which is what puts the role into Google Jobs. Google drops postings once `validThrough` has passed, currently **2026-11-20**. While the vacancy is open, push `datePosted` and `validThrough` forward every couple of months.
 
 ## Regenerating images
 
 Requires Pillow (`pip install pillow`). Only the assets the pages actually reference live in `images/`; the full-resolution originals are kept outside the repository, so point these commands at wherever you have them.
 
 - **Portrait** — `sips -s format jpeg -s formatOptions 72 --resampleWidth 900 <original> --out images/portrait-900.jpg`
-- **Video poster** — `qlmanage -t -s 1400 -o . "images/Owl_*.mp4"`, then convert the PNG with `sips`
+- **Video poster** — `node tools/poster.mjs --at 4.0`, or `--sample` first to write ten candidate frames to `/tmp` and pick one. Seeking alone returns frame zero in headless Chrome, so the script plays the clip and captures on `requestVideoFrameCallback`; the exact frame therefore shifts slightly between runs.
+- **Social cards** — `node tools/og.mjs`
 - **Icons** — `images/icon-512.png`, `apple-touch-icon.png` and `favicon.ico` are cropped from the orange mark in `Transparent Logo_black_letters.png`

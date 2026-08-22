@@ -13,6 +13,7 @@ __pycache__/
 # Images — only assets the site actually references are tracked.
 # Already-tracked files stay tracked; add a new one with: git add -f images/<file>
 images/*
+!images/og-*.png
 
 # Scratch
 .tmp-ql/
