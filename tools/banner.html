@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LinkedIn banner template</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Same approach as og.html: link the real stylesheet so the banner tracks
+         the design tokens, and namespace everything bn__* to stay clear of the
+         site's own blocks. -->
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        body {
+            margin: 0;
+            background: #555;
+        }
+
+        /* LinkedIn company cover: 1128x191. banner.mjs shoots this element at 2x. */
+        .bn {
+            position: relative;
+            width: 1128px;
+            height: 191px;
+            overflow: hidden;
+            background-color: var(--paper);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            /* Finer than the og cards: at 191px tall a 34px grid reads as stripes */
+            --grid-size: 24px;
+            --grid-line: rgba(43, 43, 43, 0.09);
+            --grid-line-strong: rgba(212, 162, 55, 0.30);
+        }
+
+        /* Registration marks. The bottom-left is deliberately absent: LinkedIn
+           parks the round logo tile over that corner on desktop. */
+        .bn__corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--orange);
+            z-index: 3;
+        }
+
+        .bn__corner--tl { top: 18px; left: 18px; border-right: 0; border-bottom: 0; }
+        .bn__corner--tr { top: 18px; right: 18px; border-left: 0; border-bottom: 0; }
+        .bn__corner--br { bottom: 18px; right: 18px; border-left: 0; border-top: 0; }
+
+        /* Centred, so the sides can be cropped on mobile without losing the words */
+        .bn__inner {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .bn__title {
+            font-family: var(--font-mono);
+            font-size: 46px;
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: var(--charcoal);
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .bn__wave {
+            display: block;
+            width: 340px;
+            height: 26px;
+            margin: 12px auto 0;
+            overflow: visible;
+        }
+
+        .bn__wave path {
+            fill: none;
+            stroke: var(--orange);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+        }
+
+        /* Faint measurement motif, echoing the home card. Sits in the right
+           margin, well clear of the centred headline. */
+        .bn__deco {
+            position: absolute;
+            right: 62px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 150px;
+            opacity: 0.42;
+            z-index: 1;
+            stroke: var(--ochre);
+            fill: none;
+            pointer-events: none;
+        }
+
+        /* Nothing decorative on the left: the logo tile covers it, and a mirrored
+           copy of the motif would read as a measurement getting worse. */
+    </style>
+</head>
+<body>
+    <svg class="svg-defs" aria-hidden="true" focusable="false">
+        <filter id="sketch" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="7" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+
+    <div class="bn grid-paper" id="banner">
+        <span class="bn__corner bn__corner--tl"></span>
+        <span class="bn__corner bn__corner--tr"></span>
+        <span class="bn__corner bn__corner--br"></span>
+
+        <svg class="bn__deco diagram" viewBox="0 0 220 150" aria-hidden="true">
+            <g filter="url(#sketch)">
+                <path class="faint" d="M24 128H204M24 128V20"/>
+                <path class="faint dashed" d="M42 112 190 40"/>
+                <path d="M52 84v34M44 84h16M44 118h16"/>
+                <path d="M92 66v30M84 66h16M84 96h16"/>
+                <path d="M132 48v28M124 48h16M124 76h16"/>
+                <path d="M172 34v24M164 34h16M164 58h16"/>
+            </g>
+            <circle class="accent-fill" cx="52" cy="101" r="5"/>
+            <circle class="accent-fill" cx="92" cy="81" r="5"/>
+            <circle class="accent-fill" cx="132" cy="62" r="5"/>
+            <circle class="accent-fill" cx="172" cy="46" r="5"/>
+        </svg>
+
+        <div class="bn__inner">
+            <h1 class="bn__title" id="title">The AI that's worth doing</h1>
+
+            <svg class="bn__wave" viewBox="0 0 460 46" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+                <path d="M0 3C1.917 3.994 7.667 5.998 11.5 8.965C15.33 11.93 19.17 16.93 23 20.81C26.83 24.68 30.67 29.37 34.5 32.2C38.33 35.04 42.17 37.24 46 37.84C49.83 38.43 53.67 37.42 57.5 35.77C61.33 34.12 65.17 30.77 69 27.94C72.83 25.1 76.67 21.29 80.5 18.75C84.33 16.22 88.17 13.8 92 12.72C95.83 11.64 99.67 11.58 103.5 12.29C107.3 13 111.2 15.03 115 16.96C118.8 18.9 122.7 21.81 126.5 23.9C130.3 26 134.2 28.3 138 29.55C141.8 30.8 145.7 31.48 149.5 31.4C153.3 31.32 157.2 30.27 161 29.06C164.8 27.85 168.7 25.78 172.5 24.15C176.3 22.53 180.2 20.53 184 19.31C187.8 18.09 191.7 17.11 195.5 16.82C199.3 16.52 203.2 16.89 207 17.55C210.8 18.21 214.7 19.58 218.5 20.76C222.3 21.94 226.2 23.55 230 24.63C233.8 25.71 237.7 26.76 241.5 27.25C245.3 27.73 249.2 27.8 253 27.53C256.8 27.27 260.7 26.44 264.5 25.65C268.3 24.85 272.2 23.63 276 22.75C279.8 21.86 283.7 20.87 287.5 20.33C291.3 19.78 295.2 19.46 299 19.47C302.8 19.48 306.7 19.9 310.5 20.39C314.3 20.88 318.2 21.74 322 22.42C325.8 23.1 329.7 23.95 333.5 24.47C337.3 25 341.2 25.43 345 25.57C348.8 25.72 352.7 25.58 356.5 25.32C360.3 25.06 364.2 24.5 368 24.01C371.8 23.52 375.7 22.84 379.5 22.38C383.3 21.92 387.2 21.47 391 21.25C394.8 21.03 398.7 20.99 402.5 21.08C406.3 21.18 410.2 21.52 414 21.84C417.8 22.17 421.7 22.68 425.5 23.05C429.3 23.43 433.2 23.85 437 24.09C440.8 24.32 444.7 24.47 448.5 24.48C452.3 24.49 458.1 24.18 460 24.12"/>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var q = new URLSearchParams(window.location.search);
+            var title = q.get('title');
+            if (title) { document.getElementById('title').textContent = title; }
+        }());
+    </script>
+</body>
+</html>

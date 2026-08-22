@@ -33,6 +33,8 @@ sitemap.xml         The five indexable pages
 
 tools/og.html       1200x630 social card template, styled from style.css
 tools/og.mjs        Renders images/og-*.png
+tools/banner.html   1128x191 LinkedIn cover template, same approach as og.html
+tools/banner.mjs    Renders images/linkedin-banner.png
 tools/poster.mjs    Pulls the hero video poster frame
 tools/check.mjs     Pre-launch check — run before every push
 tools/analytics.mjs Writes the analytics beacon into all six pages
@@ -91,6 +93,15 @@ node tools/og.mjs
 The template is `tools/og.html`, which links the real `style.css`, so the cards track the design tokens. Note that everything in it is namespaced `og-card__*`: the site's own `.card` block uses the `background` shorthand and would otherwise wipe out the graph-paper grid.
 
 Each page points at its card with an absolute `og:image` URL. Relative URLs are silently rejected by LinkedIn and X.
+
+The LinkedIn company cover is separate — the cards are what appear when someone *shares* a link, the cover is what they see *on the page*:
+
+```bash
+node tools/banner.mjs
+node tools/banner.mjs --title "Something else"
+```
+
+Rendered at 2x (2256x382) for retina; LinkedIn downsamples. Nothing sits in the bottom-left, which the round logo tile covers on desktop, and the headline is centred so the sides can crop on mobile without losing words.
 
 ## Analytics
 
