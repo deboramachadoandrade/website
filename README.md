@@ -35,6 +35,7 @@ tools/og.html       1200x630 social card template, styled from style.css
 tools/og.mjs        Renders images/og-*.png
 tools/poster.mjs    Pulls the hero video poster frame
 tools/check.mjs     Pre-launch check — run before every push
+tools/analytics.mjs Writes the analytics beacon into all six pages
 ```
 
 There is no templating, so the header and footer markup is repeated in each HTML file. The blocks are byte-identical on purpose: to change navigation everywhere, find and replace across all six pages.
@@ -90,6 +91,17 @@ node tools/og.mjs
 The template is `tools/og.html`, which links the real `style.css`, so the cards track the design tokens. Note that everything in it is namespaced `og-card__*`: the site's own `.card` block uses the `background` shorthand and would otherwise wipe out the graph-paper grid.
 
 Each page points at its card with an absolute `og:image` URL. Relative URLs are silently rejected by LinkedIn and X.
+
+## Analytics
+
+Not enabled yet. Add `prosop.ai` in the Cloudflare dashboard under Web Analytics, copy the beacon token, then:
+
+```bash
+node tools/analytics.mjs <token>
+node tools/check.mjs
+```
+
+Cloudflare Web Analytics is free and cookieless, so it needs no consent banner — a cookie prompt would sit badly next to "GDPR-native from the first sketch". `--remove` takes it out again, and re-running with a new token replaces the old one.
 
 ## The job posting
 
