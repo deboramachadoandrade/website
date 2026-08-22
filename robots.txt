@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
 
+# GitHub Pages serves the whole repository, so the build tooling is reachable
+# over HTTP. Nothing secret in it, but it has no business in search results.
+Disallow: /tools/
+Disallow: /image_creation.py
+Disallow: /requirements.txt
+Disallow: /README.md
+Disallow: /.gitignore
+
 Sitemap: https://prosop.ai/sitemap.xml
